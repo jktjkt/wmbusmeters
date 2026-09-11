@@ -2211,7 +2211,7 @@ test {
     comment  = 'Status DEFECT with date'
     args     = 'Smokey tsd2 91633569 NOKEY'
     telegram = 294468506935639176F0A0_809F2782290060822900000401D6311AF93E1BF93E008DC3009ED4000FE580
-    json     = '{"_":"telegram","media":"smoke detector","meter":"tsd2","name":"Smokey","id":"91633569","status":"DEFECT","prev_date":"2019-12-31","timestamp":"1111-11-11T11:11:11Z"}'
+    json     = '{"_":"telegram","media":"smoke detector","driver":"tsd2","name":"Smokey","id":"91633569","status":"DEFECT","prev_date":"2019-12-31","timestamp":"1111-11-11T11:11:11Z"}'
     fields   = 'Smokey;91633569;DEFECT;2019-12-31;1111-11-11 11:11.11'
 }
 test {
