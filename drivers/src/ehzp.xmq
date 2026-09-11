@@ -67,16 +67,16 @@ driver {
             }
         }
         field {
-            name           = 'total_energy_consumption_at_{storage_counter-2counter}'
-            quantity       = Energy
-            info           = 'The total energy consumption at given point in time.'
+            name     = 'total_energy_consumption_at_{storage_counter-2counter}'
+            quantity = Energy
+            info     = 'The total energy consumption at given point in time.'
             match {
                 measurement_type = Instantaneous
                 vif_range        = AnyEnergyVIF
                 add_combinable   = Synthetic
                 storage_nr       = 4,10
                 /*  This storage 4 follows 3 and is marked synthetic, wmbusmeters will look
-                    for a compact profile to fill these values. */
+                   for a compact profile to fill these values. */
             }
         }
         field {
@@ -92,9 +92,9 @@ driver {
             }
         }
         field {
-            name           = 'total_energy_production_at_{storage_counter-2counter}'
-            quantity       = Energy
-            info           = 'The total energy production at previous point in time.'
+            name     = 'total_energy_production_at_{storage_counter-2counter}'
+            quantity = Energy
+            info     = 'The total energy production at previous point in time.'
             match {
                 measurement_type = Instantaneous
                 vif_range        = AnyEnergyVIF
@@ -102,13 +102,13 @@ driver {
                 add_combinable   = BackwardFlow
                 storage_nr       = 4,10
                 /*  This storage 4 follows 3 and is marked synthetic, wmbusmeters will look
-                    for a compact profile to fill these values, and match BackwardFlow. */
+                   for a compact profile to fill these values, and match BackwardFlow. */
             }
         }
         field {
-            name     = actuality_duration_at_1
-            quantity = Time
-            info     = 'The actuality duration at the previous point in time.'
+            name         = actuality_duration_at_1
+            quantity     = Time
+            info         = 'The actuality duration at the previous point in time.'
             display_unit = s
             match {
                 measurement_type = Instantaneous
@@ -117,9 +117,9 @@ driver {
             }
         }
         field {
-            name     = on_time_at_1
-            quantity = Time
-            info     = 'The on time at the previous point in time.'
+            name         = on_time_at_1
+            quantity     = Time
+            info         = 'The on time at the previous point in time.'
             display_unit = h
             match {
                 measurement_type = Instantaneous
@@ -127,7 +127,6 @@ driver {
                 storage_nr       = 3
             }
         }
-
     }
     tests {
         test {
