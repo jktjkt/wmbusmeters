@@ -171,11 +171,25 @@ DriverDynamic::DriverDynamic(MeterInfo &mi, DriverInfo &di) :
                 fileName().c_str());
 
         const char *transform_payload_s = xmqGetString(doc, "/driver/transform_payload");
-        if (transform_payload_s && string(transform_payload_s) == "diehl_prios")
+        if (transform_payload_s)
         {
-            setDiehlPriosDecode(true);
+            if (string(transform_payload_s) == "diehl_prios")
+            {
+                setDiehlPriosDecode(true);
+            }
+            else if (string(transform_payload_s) == "try_qundis_decode")
+            {
+                setTryQundisDecode(true);
+            }
+            else
+            {
+                warning("(driver) error in %s, transform_payload cannot be %s\n"
+                        "Allowed values are diehl_prios and try_qundis_decode.\n",
+                        file_name_.c_str(),
+                        transform_payload_s);
+                throw 1;
+            }
         }
-
         xmqForeach(doc, "/driver/library/use", (XMQNodeCallback)add_use, this);
         xmqForeach(doc, "/driver/fields/field", (XMQNodeCallback)add_field, this);
 

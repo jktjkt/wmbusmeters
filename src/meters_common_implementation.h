@@ -114,6 +114,7 @@ protected:
     void addLinkMode(LinkMode lm);
     void setMfctTPLStatusBits(Translate::Lookup &lookup);
     void setDiehlPriosDecode(bool v) { diehl_prios_decode_ = v; }
+    void setTryQundisDecode(bool v) { try_qundis_decode_ = v; }
 
     void markLastFieldAsLibrary();
     FieldInfo *lastAddedField();
@@ -210,11 +211,6 @@ protected:
     void processFieldIXMLs(Telegram *t);
     void processFieldExtractors(Telegram *t);
     void processFieldCalculators();
-    // If the Qundis WalkByDataSet (0DFF5F) block in `value` is the AES-128-CBC
-    // encrypted variant (header byte[4]==0x35), decode its body in place using
-    // the configured meter key and the EN 13757-7 Mode-5 IV (ACC=block byte[2]).
-    // Returns true if decoded; false (leaving `value` untouched) otherwise.
-    bool tryDecodeQundisWalkByAes(Telegram *t, std::string *value);
 public:
     // This should be refactored.
     std::string getStatusField(FieldInfo *fi);
@@ -275,6 +271,7 @@ private:
     MeterManager *meter_manager_ {};
     bool diehl_prios_decode_ = false;
     std::string diehl_prios_combined_hex_; // frame[header_size..+4] + LFSR-decoded payload
+    bool try_qundis_decode_ = false;
 
 protected:
 

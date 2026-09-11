@@ -1,9 +1,10 @@
 // Copyright (C) 2026 Fredrik Öhrström (gpl-3.0-or-later)
 driver {
-    name           = qheatv2
-    meter_type     = HeatMeter
-    default_fields = name,id,status,total_kwh,timestamp
-    manufacturer   = Qundis
+    name              = qheatv2
+    meter_type        = HeatMeter
+    default_fields    = name,id,status,total_kwh,timestamp
+    manufacturer      = Qundis
+    transform_payload = try_qundis_decode
     detect {
         mvt = QDS,23,04
         mvt = QDS,23,37
@@ -411,7 +412,7 @@ driver {
             args     = 'HeatEnc55 qheatv2 67918447 NOKEY'
             comment  = 'Real encrypted Q heat 5.5 walk-by block (header byte[4]=0x35, from issue #1588) without a configured key: the grammar must fail closed and must not invent total_*/target_*/energy_delta_* values from the ciphertext. Only the trailing 046D meter_datetime record is real. See issues #1588/#2025.'
             telegram = 58449344478491673C377807794784916793443C040DFF5F350082B40035F4E5CF5874D4A45106F8435DDA926DE66FE62E8ECCB25B199CCAE33C6B679AD69AC8629398ECDCB1DDB263EDA12137EA02FD170000046D080F4333
-            json     = '{"_": "telegram","enhanced_id": "043C449367918447","id": "67918447","media": "radio converter (meter side)","meter": "qheatv2","meter_datetime": "2026-03-03 15:08","name": "HeatEnc55","status": "OK","timestamp": "1111-11-11T11:11:11Z"}'
+            json     = '{"_": "telegram","enhanced_id": "043C449367918447","id": "67918447","media": "radio converter (meter side)","driver": "qheatv2","meter_datetime": "2026-03-03 15:08","name": "HeatEnc55","status": "OK","timestamp": "1111-11-11T11:11:11Z"}'
             fields   = 'HeatEnc55;67918447;OK;null;1111-11-11 11:11.11'
         }
     }
