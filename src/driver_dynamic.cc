@@ -181,12 +181,12 @@ DriverDynamic::DriverDynamic(MeterInfo &mi, DriverInfo &di) :
             {
                 setTryQundisDecode(true);
             }
-            else if (transform_payload_s && string(transform_payload_s) == "sanxing_609B")
+            else if (transform_payload_s && string(transform_payload_s) == "buggy_sanxing_609B")
             {
                 // Opt-in only: permits the non-standard 0x609B decrypt-check marker (see
                 // Telegram::potentiallyDecrypt in wmbus.cc) for meters using this driver,
                 // same shape as the diehl_prios hook above.
-                setSanxing609BDecode(true);
+                setBuggySanxing609BDecode(true);
             }
             else
             {

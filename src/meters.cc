@@ -1663,9 +1663,9 @@ bool MeterCommonImplementation::handleTelegram(AboutTelegram &about, vector<ucha
         t.force_mfct_index = force_mfct_index_;
     }
 
-    if (sanxing_609b_decode_)
+    if (buggy_sanxing_609b_decode_)
     {
-        t.permit_sanxing_609b_quirk = true;
+        t.permit_sanxing_609b_bug = true;
     }
 
     ok = t.parse(input_frame, &meter_keys_, true);
