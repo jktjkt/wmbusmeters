@@ -7,6 +7,8 @@ driver {
     transform_payload = try_qundis_decode
     detect {
         mvt = QDS,33,37
+        mvt = QDS,35,06
+        mvt = QDS,35,07
         mvt = QDS,35,37
         mvt = QDS,16,06
         mvt = QDS,16,07
@@ -14,6 +16,7 @@ driver {
         mvt = QDS,17,07
         mvt = QDS,18,06
         mvt = QDS,18,07
+        mvt = QDS,19,06
         mvt = QDS,19,07
         mvt = QDS,1A,06
         mvt = QDS,1A,07
@@ -375,6 +378,11 @@ driver {
             fields   = 'QQ5;61193115;0.069;0;null;OK;1111-11-11 11:11.11'
         }
         test {
+            args     = 'MyQWater19 qwaterv2 51341234 NOKEY'
+            comment  = 'Version 19 warm water meter, walk by telegram with mfct data.'
+            telegram = 49449344341234511906780dff5f3500822d0000600107c113ffff748702003f3c215102005f374386020031003600330033003600360031003600320037002e002c002f046d0f114b38
+            json     = '{"_":"telegram","media":"warm water","driver":"qwaterv2","name":"MyQWater19","id":"51341234","target_m3":28.643,"target_date":"2026-07-31","target_year_m3":25.121,"target_year_date":"2025-12-31","total_m3":28.774,"volume_delta_2_m3":0.049,"volume_delta_3_m3":0.054,"volume_delta_4_m3":0.051,"volume_delta_5_m3":0.051,"volume_delta_6_m3":0.054,"volume_delta_7_m3":0.054,"volume_delta_8_m3":0.049,"volume_delta_9_m3":0.054,"volume_delta_10_m3":0.05,"volume_delta_11_m3":0.055,"volume_delta_12_m3":0.046,"volume_delta_13_m3":0.044,"meter_datetime":"2026-08-11 17:15","status":"OK","timestamp":"1111-11-11T11:11:11Z"}'
+            fields   = 'MyQWater19;51341234;OK;28.774;1111-11-11 11:11.11'
             args     = 'AESTest qwaterv2 14356101 000102030405060708090A0B0C0D0E0F'
             comment  = 'Encrypted Q walk-by block (header byte[4]=0x35). AES-128-CBC EN 13757-7 Mode 5 with the configured key, Mode-5 IV (M-field+A-field+ACC*8, ACC=header byte[2]). The body decrypts to the legacy plaintext layout and is parsed by the unchanged ixml grammar. The telegram and key are synthetic (not real Qundis material) so the test is self-contained. See issue #1916/#2025.'
             telegram = 49449344016135141907780DFF5F350082C100353E44AAFEDB237BDBA569404984A09F6DD12E32C2F03DD335E259DD446711256309CC4E894B4C7D8CC427C7491B94FF05046D160A4F38
