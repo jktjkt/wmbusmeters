@@ -32,6 +32,10 @@ Jan Kundrát improved the kamheat and kamwater drivers. Thanks Jan!
 Aras Abbasi created a great AGENTS.md which deserves to be read by human developers too! Thanks Aras!
 Timur Saitov improved the emerlin868 driver. Thanks Timur!
 bartman081523 fixed type G date decoding where 0xffff decodes to null. Thanks!
+Michal Strnad improved the hydroclimav2 driver. Thanks Michal!
+Christoph Gommel improved the qwaterv2 and qheatv2 drivers. Christoph also added support
+for inverse compact profiles with multiple bases, like energy consumption and production.
+Thanks Christoph!
 
 Version 3.0.0 2026-06-17
 Version 3.0.0-RC1 2026-06-17
