@@ -611,7 +611,7 @@ driver {
             name     = time_high_ambient_temperature
             quantity = Text
             template = duration_bucket
-            info     = 'Amount of time the ambinet temperature was too high.'
+            info     = 'Amount of time the ambient temperature was too high.'
             match {
                 difvifkey = 04FF24
             }
